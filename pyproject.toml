@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gfmodules-revocation-service"
+name = "gfmodules-generieke-issuer-revocatie-api"
 version = "0.1.0"
 description = ""
 license = "EUPL-1.2"
