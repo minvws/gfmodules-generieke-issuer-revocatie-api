@@ -8,6 +8,16 @@ class RevocationService:
     def __init__(self, database: Database) -> None:
         self.database = database
 
+    def unrevoke(self, index: int) -> None:
+        with self.database.get_db_session() as session:
+            revocation = session.query(Revocation).filter_by(index=index).first()
+            if not revocation:
+                raise ValueError(f"Index {index} is not revoked")
+
+            # Remove the revocation entry
+            session.delete(revocation)
+            session.commit()
+
     def revoke(self, index: int, reason: str | None = None) -> Revocation:
         with self.database.get_db_session() as session:
             # Check if the index is already revoked
@@ -21,7 +31,7 @@ class RevocationService:
 
             # Check if the index is less than the last allocated ID
             allocation = session.query(Allocation).first()
-            if allocation is None or index >= allocation.last_allocated_id:
+            if allocation is None or index > allocation.last_allocated_id:
                 raise ValueError("Index is out of bounds of the allocated IDs")
 
             # Create a new revocation entry
