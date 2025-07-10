@@ -3,7 +3,7 @@
 loglevel=debug
 
 [database]
-dsn=postgresql+psycopg://postgres:postgres@127.0.0.1:5432/revocation_service
+dsn=postgresql+psycopg://postgres:postgres@127.0.0.1:5432/revocation
 create_tables=false
 retry_backoff=0.1, 0.2, 0.4, 0.8, 1.6, 3.2, 4.8, 6.4, 10.0
 pool_size=5
@@ -13,7 +13,7 @@ pool_recycle=1800
 
 [telemetry]
 # Telemetry is enabled or not
-enabled = True
+enabled = False
 # Endpoint to GRPC server for telemetry
 endpoint = http://tracing:4317
 # Service name to use
@@ -23,7 +23,7 @@ tracer_name = gfmodules.service.revocation-service
 
 [stats]
 # Statsd is enabled or not
-enabled = True
+enabled = False
 # Host for statsd server
 host = 127.0.0.1
 # Port for statsd server
