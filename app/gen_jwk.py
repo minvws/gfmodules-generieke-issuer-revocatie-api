@@ -47,8 +47,7 @@ jwk = {
 }
 jwk["kid"] = compute_kid(jwk)
 
-public_jwk = jwk
-del public_jwk["d"]
+public_jwk = {k: v for k, v in jwk.items() if k != "d"}
 
 print("-- JWK -----------------------------------\n")
 print(json.dumps(jwk, indent=2), "\n")

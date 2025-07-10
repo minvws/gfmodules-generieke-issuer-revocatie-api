@@ -1,4 +1,4 @@
-# run with `caddy run --config Caddyfile` for testing mTLS on port 8521
+# run with `caddy run --config Caddyfile` for testing mTLS on port 8526
 {
 	debug
 	local_certs

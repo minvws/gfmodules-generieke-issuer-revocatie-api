@@ -16,7 +16,8 @@ services:
       start_period: 30s
       interval: 30m
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       gfmodules:
         aliases:
@@ -37,7 +38,7 @@ services:
     networks:
       gfmodules:
         aliases:
-          - revocation-service-app
+          - revocation-service-app-ssl
 
   postgres:
     image: postgres:15
@@ -45,23 +46,23 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: revocation
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready --user postgres"]
+      start_period: 30s
+      interval: 30m
     ports:
       - "5432:5432"
     volumes:
         - postgres_data:/var/lib/postgresql/data
     networks:
-      gfmodules:
-        aliases:
-          - revocation-service-app
-
+      - gfmodules
 
 volumes:
-    postgres_data:
-        driver: local
+  postgres_data:
+    driver: local
 
 networks:
-    gfmodules:
-        external: true
-        driver: bridge
-        name: gfmodules
+  gfmodules:
+    driver: bridge
+    name: gfmodules

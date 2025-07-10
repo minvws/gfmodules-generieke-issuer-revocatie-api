@@ -1,15 +1,19 @@
-CREATE TABLE revocations (
-    id UUID NOT NULL,
-    bit_index INTEGER NOT NULL,
-    reason TEXT,
-    revoked TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+
+--- Create web user revocation
+CREATE ROLE revocation;
+ALTER ROLE revocation WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS ;
+
+--- Create DBA role
+CREATE ROLE revocation_dba;
+ALTER ROLE revocation_dba WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS ;
+
+CREATE TABLE deploy_releases
+(
+        version varchar(255),
+        deployed_at timestamp default now()
 );
 
-CREATE INDEX ix_revocations_bit_index ON revocations (bit_index);
+ALTER TABLE deploy_releases OWNER TO revocation_dba;
 
-CREATE TABLE allocations (
-    id UUID NOT NULL DEFAULT gen_random_uuid(),
-    last_allocated_id INTEGER NOT NULL DEFAULT 0,
-    PRIMARY KEY (id)
-);
+GRANT SELECT ON deploy_releases TO revocation;
+
