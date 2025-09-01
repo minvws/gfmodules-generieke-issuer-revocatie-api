@@ -31,7 +31,7 @@ RUN apt update && \
         gnupg2 \
         libsqlite3-dev \
         build-essential \
-        postgresql-client-15 \
+        postgresql-client \
         postgresql-client-common \
         curl
 
