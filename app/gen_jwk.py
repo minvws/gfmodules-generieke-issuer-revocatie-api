@@ -1,6 +1,7 @@
 import base64
 import hashlib
 import json
+import sys
 
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
@@ -57,3 +58,8 @@ print("------------------------------------------\n")
 print("-- DID -----------------------------------\n")
 print(generate_did_jwk(public_jwk), "\n")
 print("------------------------------------------\n")
+
+if len(sys.argv) == 2:
+    with open(sys.argv[1], "w") as f:
+        print(f"Putting the JWK in {sys.argv[1]}")
+        f.write(json.dumps(jwk, indent=2) + "\n")
