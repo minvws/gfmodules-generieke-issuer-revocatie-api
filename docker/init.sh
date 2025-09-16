@@ -2,8 +2,10 @@
 
 set -e
 
-echo "➡️ Generating TLS certificates"
-tools/./generate_certs.sh
+echo "➡️ Generating issuer JWK"
+if [ ! -f secrets/issuer-jwk.json ]; then
+  python -m app.gen_jwk secrets/issuer-jwk.json
+fi
 
 echo "➡️ Creating the configuration file"
 if [ -e app.conf ]; then
