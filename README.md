@@ -2,23 +2,26 @@
 
 Implementation of <https://www.w3.org/TR/vc-bitstring-status-list/>
 
-## Disclaimer
-
-This project and all associated code serve solely as **documentation and demonstration purposes**
-to illustrate potential system communication patterns and architectures.
-
-This codebase:
-
-- Is NOT intended for production use
-- Does NOT represent a final specification
-- Should NOT be considered feature-complete or secure
-- May contain errors, omissions, or oversimplified implementations
-- Has NOT been tested or hardened for real-world scenarios
-
-The code examples are *only* meant to help understand concepts and demonstrate possibilities.
-
-By using or referencing this code, you acknowledge that you do so at your own risk and that
-the authors assume no liability for any consequences of its use.
+> [!IMPORTANT]
+> ## Disclaimer
+> 
+> This project and all associated code serve solely as documentation
+> and demonstration purposes to illustrate potential system
+> communication patterns and architectures.
+> 
+> This codebase:
+> 
+> - Is NOT intended for production use
+> - Does NOT represent a final specification
+> - Should NOT be considered feature-complete or secure
+> - May contain errors, omissions, or oversimplified implementations
+> - Has NOT been tested or hardened for real-world scenarios
+> - Is not guaranteed to follow any versioning scheme
+> 
+> The code examples are only meant to help understand concepts and demonstrate possibilities.
+> 
+> By using or referencing this code, you acknowledge that you do so at your own
+> risk and that the authors assume no liability for any consequences of its use.
 
 ## Usage
 
@@ -80,6 +83,8 @@ an app.conf mount.
 ```bash
 docker build \
   --build-arg="standalone=true" \
+  --build-arg="NEW_UID=1000" \
+  --build-arg="NEW_GID=1000" \
   -f docker/Dockerfile \
   -t gfmodules-revocation-api \
   .
@@ -95,6 +100,13 @@ docker run -ti --rm -p 8525:8525 \
   --mount type=bind,source=./app.conf.example,target=/src/app.conf \
   gfmodules-revocation-api
 ```
+
+### note:
+You can also use `docker compose` to build and run the containers. refer to [docker-compose.yml](./docker-compose.yml)
+to make adjustments as desired.
+
+You can also make adjustments to as needed to the application configuration by modifying the app.config file (see [app.conf.example](./app.conf.example))
+in case you want to run the app outside docker for example or adjust dependencies accordingly. 
 
 ## Purpose
 
