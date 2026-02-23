@@ -10,7 +10,7 @@ if [ ! -f secrets/issuer-jwk.json ]; then
 fi
 
 echo "➡️ Creating the configuration file"
-if [ -e app.conf ]; then
+if [ -e $APP_PATH ]; then
     echo "⚠️ Configuration file already exists. Skipping."
 else
   cp app.conf.example $APP_PATH
