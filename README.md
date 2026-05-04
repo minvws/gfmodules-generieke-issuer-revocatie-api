@@ -117,3 +117,15 @@ API and check if the given revocation index is still valid.
 Note that we do not connect the verifier to the revocation service. The revocation service will never know which index
 is being checked for privacy reasons. This is why each verifier will download the entire revocation list and check
 the index against the list.
+
+## Contribution
+
+As stated in the [Disclaimer](#disclaimer) this project and all associated code serve solely as documentation and
+demonstration purposes to illustrate potential system communication patterns and architectures.
+
+For that reason we will only accept contributions that fit this goal. We do appreciate any effort from the
+community, but because our time is limited it is possible that your PR or issue is closed without a full justification.
+
+If you plan to make non-trivial changes, we recommend to open an issue beforehand where we can discuss your planned changes. This increases the chance that we might be able to use your contribution (or it avoids doing work if there are reasons why we wouldn't be able to use it).
+
+Note that all commits should be signed using a gpg key.
