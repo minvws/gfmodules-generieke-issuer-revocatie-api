@@ -1,5 +1,5 @@
 publiccodeYmlVersion: "0.5"
-name: Generieke Issuer Revocatie API
+name: Generieke Functies Generieke Issuer Revocatie API
 url: https://github.com/minvws/gfmodules-generieke-issuer-revocatie-api
 platforms:
   - web
