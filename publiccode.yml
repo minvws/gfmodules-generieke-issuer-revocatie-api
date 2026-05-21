@@ -1,0 +1,65 @@
+publiccodeYmlVersion: "0.5"
+name: Generieke Issuer Revocatie API
+url: https://github.com/minvws/gfmodules-generieke-issuer-revocatie-api
+platforms:
+  - web
+categories:
+  - identity-management
+developmentStatus: development
+softwareType: standalone/backend
+intendedAudience:
+  countries:
+    - NL
+  scope:
+    - government
+    - healthcare
+
+description:
+  nl:
+    shortDescription: >-
+      Implementatie van de W3C VC Bitstring Status List voor het intrekken
+      van Verifiable Credentials.
+    longDescription: |
+      De Generieke Issuer Revocatie API implementeert de W3C VC Bitstring
+      Status List specificatie voor het beheren van de intrekkingsstatus van
+      Verifiable Credentials. De service maakt deel uit van het 'Generieke
+      Functies' project van het Ministerie van Volksgezondheid, Welzijn en
+      Sport. Via een FastAPI-interface kunnen credentials worden ingetrokken
+      en de intrekkingsstatus worden opgezocht. De API ondersteunt het
+      genereren van JWK-sleutels en DID-documenten voor het ondertekenen van
+      credentials.
+    features:
+      - Implementatie van W3C VC Bitstring Status List
+      - Beheer van intrekkingsstatus van Verifiable Credentials
+      - Genereren van JWK en DID voor credential-ondertekening
+  en:
+    shortDescription: >-
+      Implementation of the W3C VC Bitstring Status List for revoking
+      Verifiable Credentials.
+    longDescription: |
+      The Generieke Issuer Revocatie API implements the W3C VC Bitstring
+      Status List specification for managing the revocation status of
+      Verifiable Credentials. The service is part of the 'Generieke
+      Functies' project of the Ministry of Health, Welfare and Sport. Via a
+      FastAPI interface, credentials can be revoked and their revocation
+      status queried. The API supports generating JWK keys and DID documents
+      for signing credentials.
+    features:
+      - Implementation of W3C VC Bitstring Status List
+      - Management of Verifiable Credential revocation status
+      - JWK and DID generation for credential signing
+
+legal:
+  license: EUPL-1.2
+  mainCopyrightOwner: Ministerie van Volksgezondheid, Welzijn en Sport
+
+maintenance:
+  type: internal
+  contacts:
+    - name: irealisatie.nl
+      email: helpdesk@irealisatie.nl
+
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - nl
